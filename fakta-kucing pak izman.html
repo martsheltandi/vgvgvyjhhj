@@ -1,0 +1,706 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dunia Kucing — Fakta Seru & Kuis</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --cream:#FBF3E7;
+    --ink:#3A2B1F;
+    --paw-orange:#E8935A;
+    --paw-orange-dark:#C96B36;
+    --whisker-pink:#F0A6A0;
+    --mustard:#E4B23C;
+    --olive:#7A8450;
+    --card-bg:#FFFDF8;
+    --line:#E7D8C3;
+    --radius-lg: 28px;
+    --radius-sm: 14px;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:var(--cream);
+    color:var(--ink);
+    font-family:'Nunito', sans-serif;
+    line-height:1.55;
+  }
+  h1,h2,h3,.display{
+    font-family:'Fredoka', sans-serif;
+    font-weight:600;
+    margin:0;
+  }
+  a{color:inherit;}
+  .wrap{
+    max-width:920px;
+    margin:0 auto;
+    padding:0 24px;
+  }
+
+  /* Decorative paw print used sparingly */
+  .paw{
+    display:inline-block;
+    width:1em;height:1em;
+    vertical-align:-0.12em;
+  }
+
+  /* ===== HERO ===== */
+  header.hero{
+    position:relative;
+    overflow:hidden;
+    padding:76px 0 64px;
+    background:
+      radial-gradient(600px 300px at 88% -10%, #F6D9B3 0%, transparent 60%),
+      radial-gradient(500px 260px at -10% 110%, #F3C6BE 0%, transparent 55%);
+  }
+  .hero-inner{
+    display:flex;
+    align-items:center;
+    gap:40px;
+  }
+  .hero-text{flex:1.15;}
+  .eyebrow-badge{
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+    background:var(--card-bg);
+    border:2px solid var(--line);
+    border-radius:999px;
+    padding:6px 16px 6px 10px;
+    font-weight:700;
+    font-size:0.92rem;
+    color:var(--paw-orange-dark);
+    margin-bottom:22px;
+  }
+  h1.hero-title{
+    font-size:clamp(2.3rem, 5vw, 3.4rem);
+    line-height:1.08;
+    letter-spacing:-0.01em;
+    color:var(--ink);
+  }
+  h1.hero-title .cursive-word{
+    color:var(--paw-orange-dark);
+  }
+  .hero-sub{
+    margin-top:18px;
+    font-size:1.12rem;
+    max-width:46ch;
+    color:#5B4A3A;
+  }
+  .hero-cta-row{
+    margin-top:30px;
+    display:flex;
+    gap:14px;
+    flex-wrap:wrap;
+  }
+  .btn{
+    font-family:'Fredoka', sans-serif;
+    font-weight:600;
+    font-size:1.02rem;
+    border:none;
+    border-radius:999px;
+    padding:14px 28px;
+    cursor:pointer;
+    transition:transform .15s ease, box-shadow .15s ease;
+  }
+  .btn:active{transform:scale(0.96);}
+  .btn-primary{
+    background:var(--paw-orange);
+    color:#fff;
+    box-shadow:0 6px 0 var(--paw-orange-dark);
+  }
+  .btn-primary:hover{transform:translateY(-2px);}
+  .btn-ghost{
+    background:transparent;
+    color:var(--ink);
+    border:2px solid var(--ink);
+    padding:12px 26px;
+  }
+  .btn-ghost:hover{background:var(--ink); color:var(--cream);}
+
+  .hero-cat{
+    flex:1;
+    display:flex;
+    justify-content:center;
+  }
+
+  /* ===== PROGRESS BAR (sticky) ===== */
+  .progress-bar-outer{
+    position:sticky;
+    top:0;
+    z-index:50;
+    background:rgba(251,243,231,0.92);
+    backdrop-filter:blur(6px);
+    border-bottom:2px solid var(--line);
+    padding:10px 0;
+  }
+  .progress-inner{
+    display:flex;
+    align-items:center;
+    gap:14px;
+  }
+  .progress-label{
+    font-weight:800;
+    font-size:0.86rem;
+    white-space:nowrap;
+    color:var(--paw-orange-dark);
+  }
+  .progress-track{
+    flex:1;
+    height:12px;
+    background:var(--line);
+    border-radius:999px;
+    overflow:hidden;
+  }
+  .progress-fill{
+    height:100%;
+    width:0%;
+    background:linear-gradient(90deg, var(--mustard), var(--paw-orange));
+    border-radius:999px;
+    transition:width .5s cubic-bezier(.4,1.4,.6,1);
+  }
+  .progress-badge{
+    font-size:0.86rem;
+    font-weight:700;
+    white-space:nowrap;
+    color:#5B4A3A;
+  }
+
+  /* ===== SECTIONS GENERIC ===== */
+  section{padding:64px 0;}
+  .section-head{
+    max-width:60ch;
+    margin-bottom:36px;
+  }
+  .section-head h2{
+    font-size:clamp(1.6rem, 3vw, 2.1rem);
+  }
+  .section-head p{
+    margin-top:10px;
+    color:#5B4A3A;
+  }
+
+  /* ===== RANDOM FACT MACHINE ===== */
+  .fact-machine{
+    background:var(--card-bg);
+    border:2px solid var(--line);
+    border-radius:var(--radius-lg);
+    padding:40px;
+    text-align:center;
+    position:relative;
+  }
+  .fact-counter{
+    position:absolute;
+    top:22px; right:26px;
+    font-size:0.82rem;
+    font-weight:800;
+    color:var(--olive);
+    background:#EEF0E2;
+    padding:4px 12px;
+    border-radius:999px;
+  }
+  .fact-card-face{
+    min-height:120px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:1.35rem;
+    font-weight:700;
+    color:var(--ink);
+    padding:0 10px;
+    transition:opacity .25s ease, transform .25s ease;
+  }
+  .fact-card-face.fading{
+    opacity:0;
+    transform:translateY(8px);
+  }
+  .fact-tag{
+    display:inline-block;
+    margin-top:18px;
+    font-size:0.8rem;
+    font-weight:800;
+    letter-spacing:0.02em;
+    color:var(--paw-orange-dark);
+    background:#FCE7D4;
+    padding:5px 14px;
+    border-radius:999px;
+  }
+  .fact-machine .btn{margin-top:28px;}
+
+  /* ===== CATEGORY GRID ===== */
+  .cat-grid{
+    display:grid;
+    grid-template-columns:repeat(2, 1fr);
+    gap:18px;
+  }
+  @media(max-width:640px){.cat-grid{grid-template-columns:1fr;}}
+
+  .cat-card{
+    background:var(--card-bg);
+    border:2px solid var(--line);
+    border-radius:var(--radius-sm);
+    padding:22px 24px;
+    cursor:pointer;
+    user-select:none;
+  }
+  .cat-card-head{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+  }
+  .cat-card-head h3{
+    font-size:1.15rem;
+    display:flex;
+    align-items:center;
+    gap:10px;
+  }
+  .cat-count{
+    font-size:0.8rem;
+    font-weight:700;
+    color:#8A7A67;
+  }
+  .cat-chevron{
+    font-size:1.2rem;
+    transition:transform .2s ease;
+    color:var(--paw-orange-dark);
+  }
+  .cat-card.open .cat-chevron{transform:rotate(180deg);}
+  .cat-card-body{
+    max-height:0;
+    overflow:hidden;
+    transition:max-height .35s ease;
+  }
+  .cat-card.open .cat-card-body{
+    max-height:900px;
+  }
+  .cat-fact-item{
+    padding:14px 0 0;
+    border-top:1px dashed var(--line);
+    margin-top:14px;
+    font-size:0.96rem;
+    color:#4A3A2C;
+    opacity:0;
+    transform:translateY(4px);
+    animation:reveal .3s ease forwards;
+  }
+  @keyframes reveal{to{opacity:1; transform:none;}}
+
+  /* ===== QUIZ ===== */
+  .quiz-box{
+    background:var(--card-bg);
+    border:2px solid var(--line);
+    border-radius:var(--radius-lg);
+    padding:36px;
+  }
+  .quiz-top{
+    display:flex;
+    justify-content:space-between;
+    align-items:baseline;
+    margin-bottom:22px;
+    flex-wrap:wrap;
+    gap:10px;
+  }
+  .quiz-score{
+    font-family:'Fredoka', sans-serif;
+    font-weight:600;
+    color:var(--paw-orange-dark);
+  }
+  .quiz-question{
+    font-size:1.2rem;
+    font-weight:700;
+    margin-bottom:20px;
+  }
+  .quiz-options{
+    display:grid;
+    gap:12px;
+  }
+  .quiz-opt{
+    text-align:left;
+    background:var(--cream);
+    border:2px solid var(--line);
+    border-radius:var(--radius-sm);
+    padding:14px 18px;
+    font-size:1rem;
+    font-family:'Nunito', sans-serif;
+    font-weight:700;
+    color:var(--ink);
+    cursor:pointer;
+    transition:border-color .15s ease, background .15s ease;
+  }
+  .quiz-opt:hover{border-color:var(--paw-orange);}
+  .quiz-opt.correct{
+    background:#E4EFD8;
+    border-color:var(--olive);
+  }
+  .quiz-opt.wrong{
+    background:#F7DCD6;
+    border-color:#C96B5A;
+  }
+  .quiz-opt:disabled{cursor:default;}
+  .quiz-feedback{
+    margin-top:16px;
+    font-weight:700;
+    min-height:1.4em;
+  }
+  .quiz-feedback.correct-text{color:var(--olive);}
+  .quiz-feedback.wrong-text{color:#B5573F;}
+  .quiz-footer{
+    margin-top:24px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+  }
+  .quiz-progress-dots{
+    display:flex;
+    gap:6px;
+  }
+  .dot{
+    width:9px;height:9px;
+    border-radius:50%;
+    background:var(--line);
+  }
+  .dot.done{background:var(--paw-orange);}
+  .quiz-result{
+    text-align:center;
+  }
+  .quiz-result .big-score{
+    font-family:'Fredoka', sans-serif;
+    font-size:3rem;
+    color:var(--paw-orange-dark);
+  }
+
+  /* ===== FOOTER ===== */
+  footer{
+    padding:40px 0 60px;
+    text-align:center;
+    color:#8A7A67;
+    font-size:0.9rem;
+  }
+
+  /* Accessibility: focus states */
+  button:focus-visible, .cat-card:focus-visible{
+    outline:3px solid var(--paw-orange-dark);
+    outline-offset:2px;
+  }
+
+  @media (prefers-reduced-motion: reduce){
+    *{animation-duration:0.01ms !important; transition-duration:0.01ms !important;}
+  }
+
+  @media(max-width:760px){
+    .hero-inner{flex-direction:column;}
+    .hero-cat{order:-1;}
+  }
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="wrap hero-inner">
+    <div class="hero-text">
+      <span class="eyebrow-badge">🐾 Kuis di dalam! Kumpulkan poinmu</span>
+      <h1 class="hero-title">Dunia kucing, penuh <span class="cursive-word">kejutan ~By Martshel~.</span></h1>
+      <p class="hero-sub">Dari telinga yang punya 32 otot sampai kenapa kucing mendengkur — jelajahi fakta demi fakta, buka semua kategori, lalu uji ingatanmu lewat kuis di akhir halaman.</p>
+      <div class="hero-cta-row">
+        <button class="btn btn-primary" onclick="document.getElementById('mesin-fakta').scrollIntoView()">Mulai jelajah fakta</button>
+        <button class="btn btn-ghost" onclick="document.getElementById('kuis').scrollIntoView()">Langsung ke kuis</button>
+      </div>
+    </div>
+    <div class="hero-cat" aria-hidden="true">
+      <svg width="230" height="230" viewBox="0 0 230 230" fill="none">
+        <ellipse cx="115" cy="185" rx="70" ry="14" fill="#E8935A" opacity="0.15"/>
+        <path d="M60 90 L45 40 L85 65 Z" fill="#E8935A"/>
+        <path d="M170 90 L185 40 L145 65 Z" fill="#E8935A"/>
+        <path d="M65 92 L54 55 L82 70 Z" fill="#F0A6A0"/>
+        <path d="M165 92 L176 55 L148 70 Z" fill="#F0A6A0"/>
+        <circle cx="115" cy="125" r="70" fill="#E8935A"/>
+        <circle cx="90" cy="115" r="9" fill="#3A2B1F"/>
+        <circle cx="140" cy="115" r="9" fill="#3A2B1F"/>
+        <path d="M108 138 Q115 144 122 138" stroke="#3A2B1F" stroke-width="3" fill="none" stroke-linecap="round"/>
+        <path d="M115 130 L108 138 L122 138 Z" fill="#C96B36"/>
+        <line x1="60" y1="135" x2="20" y2="128" stroke="#3A2B1F" stroke-width="2"/>
+        <line x1="60" y1="142" x2="20" y2="148" stroke="#3A2B1F" stroke-width="2"/>
+        <line x1="170" y1="135" x2="210" y2="128" stroke="#3A2B1F" stroke-width="2"/>
+        <line x1="170" y1="142" x2="210" y2="148" stroke="#3A2B1F" stroke-width="2"/>
+      </svg>
+    </div>
+  </div>
+</header>
+
+<div class="progress-bar-outer">
+  <div class="wrap progress-inner">
+    <span class="progress-label">🐱 Progres jelajah</span>
+    <div class="progress-track"><div class="progress-fill" id="progressFill"></div></div>
+    <span class="progress-badge" id="progressBadge">Anak Kucing</span>
+  </div>
+</div>
+
+<main class="wrap">
+
+  <section id="mesin-fakta">
+    <div class="section-head">
+      <h2>Mesin fakta kejutan</h2>
+      <p>Klik tombolnya, dan satu fakta kucing acak akan muncul. Semakin banyak diklik, semakin tinggi levelmu.</p>
+    </div>
+    <div class="fact-machine">
+      <span class="fact-counter" id="factCounter">0 fakta dibuka</span>
+      <div class="fact-card-face" id="factFace">Klik tombol di bawah untuk fakta pertamamu!</div>
+      <span class="fact-tag" id="factTag" style="visibility:hidden;">Kategori</span>
+      <div>
+        <button class="btn btn-primary" onclick="showRandomFact()">🎲 Kasih Fakta Baru!</button>
+      </div>
+    </div>
+  </section>
+
+  <section id="kategori">
+    <div class="section-head">
+      <h2>Jelajahi per kategori</h2>
+      <p>Buka satu per satu untuk melihat semua fakta di dalamnya — cocok kalau kamu mau baca yang runtut.</p>
+    </div>
+    <div class="cat-grid" id="catGrid"></div>
+  </section>
+
+  <section id="kuis">
+    <div class="section-head">
+      <h2>Uji dirimu: Kuis Kucing</h2>
+      <p>5 pertanyaan singkat. Jawab semua untuk melihat skor akhirmu.</p>
+    </div>
+    <div class="quiz-box" id="quizBox"></div>
+  </section>
+
+</main>
+
+<footer>
+  Pak kan namanya coding dan ai toh jadii yah gak salah kan pak?hehe
+</footer>
+
+<script>
+// ===================== DATA =====================
+const facts = [
+  {cat:"Biologi", text:"Setiap telinga kucing digerakkan oleh sekitar 32 otot, jauh lebih banyak dibanding telinga manusia."},
+  {cat:"Biologi", text:"Kucing tidak bisa mencicipi rasa manis karena mereka tidak memiliki reseptor rasa untuk gula."},
+  {cat:"Biologi", text:"Kumis kucing sama lebarnya dengan tubuhnya, berguna untuk mengukur apakah ia bisa muat lewat suatu celah."},
+  {cat:"Biologi", text:"Kucing memiliki kelopak mata ketiga yang disebut membran nictitans, yang jarang terlihat saat kucing sehat."},
+  {cat:"Biologi", text:"Jantung kucing berdetak jauh lebih cepat dari jantung manusia, sekitar 140–220 kali per menit."},
+  {cat:"Perilaku", text:"Dengkuran kucing tidak selalu berarti senang — kucing juga bisa mendengkur saat stres atau kesakitan untuk menenangkan diri."},
+  {cat:"Perilaku", text:"Kucing menggosokkan wajahnya ke benda atau orang untuk meninggalkan aroma dari kelenjar di pipinya sebagai tanda kepemilikan."},
+  {cat:"Perilaku", text:"Kucing dewasa jarang mengeong pada sesama kucing — meong adalah suara yang dikembangkan khusus untuk 'berbicara' dengan manusia."},
+  {cat:"Perilaku", text:"Perilaku menguleni dengan cakar (kneading) dipercaya berasal dari kebiasaan anak kucing menstimulasi susu induknya."},
+  {cat:"Perilaku", text:"Kucing bisa menghabiskan 12 hingga 16 jam sehari untuk tidur, hampir setengah dari hidupnya."},
+  {cat:"Sejarah", text:"Kucing mulai hidup berdampingan dengan manusia sekitar 9.000–10.000 tahun lalu di kawasan Timur Tengah kuno."},
+  {cat:"Sejarah", text:"Di Mesir Kuno, kucing sangat dihormati sampai membunuh kucing bisa dikenai hukuman berat."},
+  {cat:"Sejarah", text:"Kata 'kucing' dalam berbagai bahasa Eropa diperkirakan berasal dari kata Latin akhir 'cattus'."},
+  {cat:"Sejarah", text:"Kucing dibawa ke atas kapal-kapal pelayaran kuno untuk mengendalikan populasi tikus."},
+  {cat:"Rekor Unik", text:"Kucing bisa melompat hingga sekitar enam kali panjang tubuhnya dalam sekali lompatan."},
+  {cat:"Rekor Unik", text:"Kucing tercepat di dunia mampu berlari dengan kecepatan lebih dari 48 km/jam dalam jarak pendek."},
+  {cat:"Rekor Unik", text:"Sidik hidung kucing itu unik, seperti sidik jari manusia — tidak ada dua kucing dengan pola yang sama persis."},
+  {cat:"Rekor Unik", text:"Kucing tertua yang tercatat hidup hingga usia lebih dari 30 tahun, jauh melampaui usia rata-rata kucing rumahan."},
+];
+
+const catOrder = ["Biologi","Perilaku","Sejarah","Rekor Unik"];
+const catIcon = {"Biologi":"🧬","Perilaku":"🐾","Sejarah":"📜","Rekor Unik":"🏆"};
+
+const quizData = [
+  {
+    q:"Kenapa kucing dewasa jarang mengeong pada sesama kucing?",
+    options:["Karena mereka lebih suka menggeram","Karena meong dikembangkan khusus untuk manusia","Karena mereka tidak punya pita suara","Karena meong hanya untuk anak kucing"],
+    correct:1,
+    explain:"Betul — meong adalah bentuk komunikasi yang kucing kembangkan terutama untuk 'berbicara' dengan manusia, bukan sesama kucing."
+  },
+  {
+    q:"Apa fungsi utama kumis kucing?",
+    options:["Menambah keseimbangan warna wajah","Mengukur suhu udara","Mengukur lebar celah yang bisa dilewati","Membantu mencium bau dari jauh"],
+    correct:2,
+    explain:"Tepat — panjang kumis kira-kira sama dengan lebar tubuh kucing, jadi ia bisa 'mengukur' apakah suatu celah cukup lebar untuk dilewati."
+  },
+  {
+    q:"Dengkuran kucing selalu menandakan kucing sedang senang. Benar atau salah?",
+    options:["Benar, selalu berarti senang","Salah, bisa juga saat stres atau sakit"],
+    correct:1,
+    explain:"Salah — dengkuran juga bisa muncul saat kucing stres atau kesakitan, sebagai cara menenangkan diri sendiri."
+  },
+  {
+    q:"Sekitar kapan kucing mulai hidup berdampingan dengan manusia?",
+    options:["Sekitar 500 tahun lalu","Sekitar 9.000–10.000 tahun lalu","Sekitar 100.000 tahun lalu","Sekitar 1.000 tahun lalu"],
+    correct:1,
+    explain:"Benar — hubungan kucing dan manusia diperkirakan dimulai sekitar 9.000–10.000 tahun lalu di Timur Tengah kuno."
+  },
+  {
+    q:"Apa yang unik dari hidung kucing?",
+    options:["Selalu berwarna hitam","Pola sidik hidungnya unik seperti sidik jari","Tidak punya indra penciuman","Berubah warna sesuai suasana hati"],
+    correct:1,
+    explain:"Tepat — pola sidik hidung setiap kucing unik, mirip dengan sidik jari pada manusia."
+  }
+];
+
+// ===================== FACT MACHINE =====================
+let openedFacts = new Set();
+let lastFactIndex = -1;
+
+function updateProgress(){
+  const pct = Math.round((openedFacts.size / facts.length) * 100);
+  document.getElementById('progressFill').style.width = pct + '%';
+  document.getElementById('factCounter').textContent = openedFacts.size + ' dari ' + facts.length + ' fakta dibuka';
+
+  let badge = "Anak Kucing";
+  if(pct >= 100) badge = "Pakar Kucing Sejati 🏆";
+  else if(pct >= 70) badge = "Ahli Kucing 🐈";
+  else if(pct >= 40) badge = "Penjelajah Kucing 🐾";
+  else if(pct >= 15) badge = "Kucing Penasaran 🐱";
+  document.getElementById('progressBadge').textContent = badge;
+}
+
+function showRandomFact(){
+  const face = document.getElementById('factFace');
+  const tag = document.getElementById('factTag');
+  face.classList.add('fading');
+  setTimeout(() => {
+    let idx;
+    do{ idx = Math.floor(Math.random() * facts.length); } while(idx === lastFactIndex && facts.length > 1);
+    lastFactIndex = idx;
+    const f = facts[idx];
+    face.textContent = f.text;
+    tag.textContent = catIcon[f.cat] + ' ' + f.cat;
+    tag.style.visibility = 'visible';
+    openedFacts.add(idx);
+    updateProgress();
+    face.classList.remove('fading');
+  }, 220);
+}
+
+// ===================== CATEGORY GRID =====================
+function buildCategoryGrid(){
+  const grid = document.getElementById('catGrid');
+  catOrder.forEach(cat => {
+    const items = facts.filter(f => f.cat === cat);
+    const card = document.createElement('div');
+    card.className = 'cat-card';
+    card.tabIndex = 0;
+    card.innerHTML = `
+      <div class="cat-card-head">
+        <h3>${catIcon[cat]} ${cat}</h3>
+        <div style="display:flex; align-items:center; gap:10px;">
+          <span class="cat-count">${items.length} fakta</span>
+          <span class="cat-chevron">⌄</span>
+        </div>
+      </div>
+      <div class="cat-card-body">
+        ${items.map((f, i) => `<div class="cat-fact-item" style="animation-delay:${i*0.05}s">${f.text}</div>`).join('')}
+      </div>
+    `;
+    const toggle = () => {
+      const wasOpen = card.classList.contains('open');
+      document.querySelectorAll('.cat-card').forEach(c => c.classList.remove('open'));
+      if(!wasOpen){
+        card.classList.add('open');
+        items.forEach(f => openedFacts.add(facts.indexOf(f)));
+        updateProgress();
+      }
+    };
+    card.addEventListener('click', toggle);
+    card.addEventListener('keydown', e => { if(e.key === 'Enter' || e.key === ' '){ e.preventDefault(); toggle(); } });
+    grid.appendChild(card);
+  });
+}
+
+// ===================== QUIZ =====================
+let quizIndex = 0;
+let quizScore = 0;
+let answered = false;
+
+function renderQuiz(){
+  const box = document.getElementById('quizBox');
+
+  if(quizIndex >= quizData.length){
+    box.innerHTML = `
+      <div class="quiz-result">
+        <div class="big-score">${quizScore} / ${quizData.length}</div>
+        <p style="margin-top:10px; font-weight:700;">${resultMessage(quizScore)}</p>
+        <button class="btn btn-primary" style="margin-top:20px;" onclick="restartQuiz()">Ulangi Kuis</button>
+      </div>
+    `;
+    return;
+  }
+
+  const q = quizData[quizIndex];
+  answered = false;
+
+  const dots = quizData.map((_, i) => `<span class="dot ${i < quizIndex ? 'done' : ''}"></span>`).join('');
+
+  box.innerHTML = `
+    <div class="quiz-top">
+      <span class="quiz-score">Skor: ${quizScore}</span>
+      <span style="font-weight:700; color:#8A7A67;">Pertanyaan ${quizIndex+1} dari ${quizData.length}</span>
+    </div>
+    <div class="quiz-question">${q.q}</div>
+    <div class="quiz-options" id="quizOptions">
+      ${q.options.map((opt, i) => `<button class="quiz-opt" data-idx="${i}">${opt}</button>`).join('')}
+    </div>
+    <div class="quiz-feedback" id="quizFeedback"></div>
+    <div class="quiz-footer">
+      <div class="quiz-progress-dots">${dots}</div>
+      <button class="btn btn-ghost" id="nextBtn" style="display:none; padding:10px 22px;" onclick="nextQuestion()">Lanjut →</button>
+    </div>
+  `;
+
+  document.querySelectorAll('.quiz-opt').forEach(btn => {
+    btn.addEventListener('click', () => selectAnswer(parseInt(btn.dataset.idx)));
+  });
+}
+
+function selectAnswer(idx){
+  if(answered) return;
+  answered = true;
+  const q = quizData[quizIndex];
+  const buttons = document.querySelectorAll('.quiz-opt');
+  const feedback = document.getElementById('quizFeedback');
+
+  buttons.forEach((btn, i) => {
+    btn.disabled = true;
+    if(i === q.correct) btn.classList.add('correct');
+    else if(i === idx) btn.classList.add('wrong');
+  });
+
+  if(idx === q.correct){
+    quizScore++;
+    feedback.textContent = "Benar! " + q.explain;
+    feedback.className = 'quiz-feedback correct-text';
+  } else {
+    feedback.textContent = "Belum tepat. " + q.explain;
+    feedback.className = 'quiz-feedback wrong-text';
+  }
+
+  document.getElementById('nextBtn').style.display = 'inline-block';
+}
+
+function nextQuestion(){
+  quizIndex++;
+  renderQuiz();
+}
+
+function restartQuiz(){
+  quizIndex = 0;
+  quizScore = 0;
+  renderQuiz();
+}
+
+function resultMessage(score){
+  const pct = score / quizData.length;
+  if(pct === 1) return "Sempurna! Kamu benar-benar paham seluk-beluk kucing.";
+  if(pct >= 0.6) return "Bagus! Sedikit lagi menuju ahli kucing sejati.";
+  return "Lumayan — coba baca ulang fakta-faktanya lalu ulangi kuisnya!";
+}
+
+// ===================== INIT =====================
+buildCategoryGrid();
+renderQuiz();
+updateProgress();
+</script>
+
+</body>
+</html>
